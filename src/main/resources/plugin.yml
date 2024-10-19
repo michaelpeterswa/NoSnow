@@ -1,6 +1,6 @@
 name: NoSnow
 main: codes.nw.nosnow.NoSnow
-version: 1.0.0
+version: 1.0.3
 api-version: 1.21.1
 author: nwradio
 commands:
@@ -9,6 +9,26 @@ commands:
     usage: /nsinfo
     permission: NoSnow.nsinfo
     permission-message: You don't have permission to use NoSnow Info
+  nsadd:
+    description: Add new blocks to the NoSnow list
+    usage: /nsadd <material block name>
+    permission: NoSnow.nsadd
+    permission-message: You don't have permission to add a block to the NoSnow list
+  nsdel:
+    description: Remove blocks from the NoSnow list
+    usage: /nsdel <material block name>
+    permission: NoSnow.nsdel
+    permission-message: You don't have permission to remove a block from the NoSnow list
+  nslookadd:
+    description: Look at a block and add it to the NoSnow list
+    usage: /nslookadd
+    permission: NoSnow.nslookadd
+    permission-message: You don't have permission to look at a block and add it to the NoSnow list
+  nsremovesnow:
+    description: Remove snow from radius around player
+    usage: /nsremovesnow
+    permission: NoSnow.nsremovesnow
+    permission-message: You don't have permission to remove snow around player
 permissions:
   NoSnow.*:
     description: Gives access to all commands

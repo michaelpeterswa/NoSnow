@@ -13,26 +13,25 @@ public class InfoCommand implements CommandExecutor {
         ConfigHandler configHandler = new ConfigHandler();
 
         if (args.length == 0) {
-            String noSnowPrefix = String.format("%s[%sNoSnow%s] ", ChatColor.AQUA, ChatColor.WHITE, ChatColor.AQUA);
 
-            sender.sendMessage(noSnowPrefix + ChatColor.WHITE + "---------------------------");
-            sender.sendMessage(noSnowPrefix + ChatColor.WHITE + "NoSnow v1.0.0");
-            sender.sendMessage(noSnowPrefix);
+            sender.sendMessage(TextPrefix.PrefixedMessage("---------------------------"));
+            sender.sendMessage(TextPrefix.PrefixedMessage("NoSnow v1.0.3"));
+            sender.sendMessage(TextPrefix.PrefixedMessage(""));
 
             List<Material> blockNames = configHandler.returnBlockTypes(configHandler.readFromConfig());
 
             if (blockNames.size() == 0) {
                 sender.sendMessage(
-                        noSnowPrefix + ChatColor.WHITE + "No blocks are currently set to prevent snow from forming");
+                        TextPrefix.PrefixedMessage("No blocks are currently set to prevent snow from forming"));
             } else {
-                sender.sendMessage(noSnowPrefix + ChatColor.WHITE + "Blocks that will prevent snow from forming:");
+                sender.sendMessage(TextPrefix.PrefixedMessage("Blocks that will prevent snow from forming:"));
                 // empty line
-                sender.sendMessage(noSnowPrefix);
+                sender.sendMessage(TextPrefix.PrefixedMessage(""));
                 for (Material blockName : blockNames) {
-                    sender.sendMessage(noSnowPrefix + ChatColor.RED + blockName.toString());
+                    sender.sendMessage(TextPrefix.PrefixedMessage(ChatColor.RED + blockName.toString()));
                 }
             }
-            sender.sendMessage(noSnowPrefix + ChatColor.WHITE + "---------------------------");
+            sender.sendMessage(TextPrefix.PrefixedMessage("---------------------------"));
 
         }
         return true;

@@ -11,7 +11,7 @@ public class NoSnow extends JavaPlugin {
     public void onEnable() {
         getLogger().info(" ");
         getLogger().info("\u001b[35m -------------\u001b[0m");
-        getLogger().info("\u001b[35m NoSnow v1.0.0\u001b[0m");
+        getLogger().info("\u001b[35m NoSnow v1.0.3\u001b[0m");
         getLogger().info("\u001b[35m -------------\u001b[0m");
         getLogger().info(" ");
         instance = this;
@@ -28,7 +28,11 @@ public class NoSnow extends JavaPlugin {
         getServer().getPluginManager().registerEvents(snowBlockFormListenerInstance, this);
 
         try {
-            getCommand("nsinfo").setExecutor(new InfoCommand()); // main command hook
+            getCommand("nsinfo").setExecutor(new InfoCommand());
+            getCommand("nsadd").setExecutor(new AddCommand());
+            getCommand("nsdel").setExecutor(new DelCommand());
+            getCommand("nslookadd").setExecutor(new LookAddCommand());
+            getCommand("nsremovesnow").setExecutor(new RemoveSnowCommand());
         } catch (Exception e) {
             getLogger().info("command hooks did not initialize properly" + e);
         }
