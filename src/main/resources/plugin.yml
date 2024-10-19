@@ -1,0 +1,14 @@
+name: NoSnow
+main: codes.nw.nosnow.NoSnow
+version: 1.0.0
+api-version: 1.21.1
+author: nwradio
+commands:
+  nsinfo:
+    description: This is the main NoSnow command
+    usage: /nsinfo
+    permission: NoSnow.nsinfo
+    permission-message: You don't have permission to use NoSnow Info
+permissions:
+  NoSnow.*:
+    description: Gives access to all commands
