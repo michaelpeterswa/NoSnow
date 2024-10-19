@@ -15,6 +15,19 @@ public class ConfigHandler {
         plugin.saveDefaultConfig();
     }
 
+    public void saveNewBlockTypes(List<Material> blockTypes) {
+        StringBuilder blockTypesString = new StringBuilder();
+        blockTypes.forEach(blockType -> blockTypesString.append(blockType.name().toLowerCase()).append(","));
+        // trim comma off end of string
+        if (blockTypesString.length() > 0) {
+            blockTypesString.setLength(blockTypesString.length() - 1);
+        }
+
+        String blockTypesStringFinal = blockTypesString.toString();
+        plugin.getConfig().set("blocks", blockTypesStringFinal);
+        plugin.saveConfig();
+    }
+
     public FileConfiguration readFromConfig() {
         return plugin.getConfig();
     }
