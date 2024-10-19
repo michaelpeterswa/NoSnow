@@ -1,5 +1,8 @@
 package codes.nw.nosnow;
 
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFormEvent;
@@ -8,17 +11,14 @@ public class SnowBlockFormListener implements Listener {
 
     @EventHandler
     public void onSnowBlockForm(BlockFormEvent event) {
-        // Bukkit.getLogger().info(event.getBlock().getRelative(0, -1,
-        // 0).getType().toString());
-        // Bukkit.getServer().broadcastMessage(event.getBlock().getRelative(0, -1,
-        // 0).getType().toString());
-        // get block below the snow block
-        ConfigHandler configHandler = new ConfigHandler();
-        for (String blockName : configHandler.returnBlockNames(configHandler.readFromConfig())) {
-            // log block type
-
-            if (event.getBlock().getRelative(0, -1, 0).getType().toString().contains(blockName)) {
-                event.setCancelled(true);
+        if (event.getNewState().getType() == Material.SNOW) {
+            // get block below forming snow
+            Block bottomFaceBlock = event.getBlock().getRelative(BlockFace.DOWN);
+            ConfigHandler configHandler = new ConfigHandler();
+            for (Material blockName : configHandler.returnBlockTypes(configHandler.readFromConfig())) {
+                if (bottomFaceBlock.getType() == blockName) {
+                    event.setCancelled(true);
+                }
             }
         }
     }

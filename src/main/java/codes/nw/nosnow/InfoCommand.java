@@ -1,6 +1,9 @@
 package codes.nw.nosnow;
 
+import java.util.List;
+
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,17 +17,19 @@ public class InfoCommand implements CommandExecutor {
 
             sender.sendMessage(noSnowPrefix + ChatColor.WHITE + "---------------------------");
             sender.sendMessage(noSnowPrefix + ChatColor.WHITE + "NoSnow v1.0.0");
+            sender.sendMessage(noSnowPrefix);
 
-            String[] blockNames = configHandler.returnBlockNames(configHandler.readFromConfig());
-            sender.sendMessage(noSnowPrefix + ChatColor.WHITE + blockNames.length);
+            List<Material> blockNames = configHandler.returnBlockTypes(configHandler.readFromConfig());
 
-            if (blockNames.length == 0) {
+            if (blockNames.size() == 0) {
                 sender.sendMessage(
-                        noSnowPrefix + ChatColor.RED + "No blocks are currently set to prevent snow from forming");
+                        noSnowPrefix + ChatColor.WHITE + "No blocks are currently set to prevent snow from forming");
             } else {
-                sender.sendMessage(noSnowPrefix + ChatColor.RED + "Blocks that will prevent snow from forming:");
-                for (String blockName : blockNames) {
-                    sender.sendMessage(noSnowPrefix + ChatColor.RED + blockName);
+                sender.sendMessage(noSnowPrefix + ChatColor.WHITE + "Blocks that will prevent snow from forming:");
+                // empty line
+                sender.sendMessage(noSnowPrefix);
+                for (Material blockName : blockNames) {
+                    sender.sendMessage(noSnowPrefix + ChatColor.RED + blockName.toString());
                 }
             }
             sender.sendMessage(noSnowPrefix + ChatColor.WHITE + "---------------------------");
