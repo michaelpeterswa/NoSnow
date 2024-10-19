@@ -19,7 +19,7 @@ public class NoSnow extends JavaPlugin {
         saveDefaultConfig();
 
         // bStats support
-        int id = 4874;
+        int id = 23670;
 
         @SuppressWarnings("unused")
         Metrics metrics = new Metrics(this, id);
