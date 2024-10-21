@@ -30,7 +30,10 @@ public class RemoveSnowCommand implements CommandExecutor {
                             continue;
                         }
                         Block block = player.getLocation().add(x, y, z).getBlock();
-                        if (block.getType() == Material.SNOW || block.getType() == Material.SNOW_BLOCK) {
+                        Material blockType = block.getType();
+                        if (blockType == Material.SNOW ||
+                                blockType == Material.SNOW_BLOCK ||
+                                blockType == Material.POWDER_SNOW) {
                             block.setType(Material.AIR);
                             counter++;
                         }

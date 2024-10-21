@@ -27,8 +27,16 @@ jobs:
           distribution: "corretto"
           architecture: x64
 
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "${findandreplace.version}"
+          replace: ${{ github.ref }}
+          include: "src/main/resources/plugin.yml"
+          regex: false
+
       - name: Run the Maven verify phase
-        run: mvn verify -f "pom.xml"
+        run: mvn verify -Drevision=${{ github.ref }} -f "pom.xml"
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2

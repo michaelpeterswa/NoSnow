@@ -1,6 +1,6 @@
 name: NoSnow
 main: codes.nw.nosnow.NoSnow
-version: 1.0.3
+version: ${findandreplace.version}
 api-version: 1.21.1
 author: nwradio
 commands:
