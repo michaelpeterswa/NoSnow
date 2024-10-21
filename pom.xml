@@ -6,7 +6,7 @@
 
     <groupId>codes.nw</groupId>
     <artifactId>NoSnow</artifactId>
-    <version>1.0.3</version>
+    <version>${revision}</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
